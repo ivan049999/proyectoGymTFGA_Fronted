@@ -1,5 +1,5 @@
 import { FormEvent, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export function RegisterPage() {
   const navigate = useNavigate();
@@ -71,6 +71,11 @@ export function RegisterPage() {
             minLength={6}
           />
         </div>
+        <p className="login-register-row">
+          <Link to="/login" className="login-register-link">
+            ¿Ya tienes cuenta? Inicia sesión
+          </Link>
+        </p>
         {error ? <p className="login-form-error">{error}</p> : null}
         <button type="submit" className="login-submit">
           Crear cuenta
