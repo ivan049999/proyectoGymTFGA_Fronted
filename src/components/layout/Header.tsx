@@ -1,6 +1,7 @@
 import { useState } from "react";
-import { useLocation } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import { SideNavDrawer } from "@/components/layout/SideNavDrawer";
+import { HOME_TOP_NAV } from "@/data/homeNav";
 
 export function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -11,6 +12,8 @@ export function Header() {
       : pathname === "/registro"
         ? "Registrarse"
         : "Inicio";
+
+  const showHomeNav = pathname === "/" || pathname === "/valoranos";
 
   return (
     <>
@@ -31,7 +34,27 @@ export function Header() {
           />
         </svg>
       </button>
-      <h1 className="app-header__title">{title}</h1>
+      {showHomeNav ? (
+        <div className="app-header__center">
+          {pathname === "/" ? <h1 className="sr-only">Inicio</h1> : null}
+          <nav className="app-header__nav" aria-label="Principal">
+            {HOME_TOP_NAV.map(({ to, label }) => (
+              <NavLink
+                key={to}
+                to={to}
+                end={to === "/"}
+                className={({ isActive }) =>
+                  `app-header__nav-link${isActive ? " app-header__nav-link--active" : ""}`
+                }
+              >
+                {label}
+              </NavLink>
+            ))}
+          </nav>
+        </div>
+      ) : (
+        <h1 className="app-header__title">{title}</h1>
+      )}
       <button
         type="button"
         className="app-header__icon-btn"

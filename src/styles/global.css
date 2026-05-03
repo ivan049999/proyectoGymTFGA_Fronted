@@ -42,6 +42,66 @@ body {
   padding: 0.65rem 0.75rem;
 }
 
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.app-header__center {
+  position: relative;
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+}
+
+.app-header__nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.25rem;
+  width: 100%;
+  padding: 0 0.25rem;
+}
+
+.app-header__nav-link {
+  flex: 0 0 auto;
+  padding: 0.4rem 0.65rem;
+  border-radius: 0.5rem;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: #334155;
+  white-space: nowrap;
+  transition:
+    color 0.15s ease,
+    background 0.15s ease;
+}
+
+.app-header__nav-link:hover {
+  color: #0a0a0a;
+  background: #f1f5f9;
+}
+
+.app-header__nav-link--active {
+  color: var(--gym-mustard-dark);
+  background: rgba(213, 164, 25, 0.18);
+}
+
+.app-header__nav-link:focus-visible {
+  outline: 2px solid var(--gym-mustard);
+  outline-offset: 2px;
+}
+
 .app-header__title {
   margin: 0;
   font-size: 0.95rem;
@@ -181,8 +241,11 @@ body {
 }
 
 .home-grid {
+  flex: 1;
+  min-height: 0;
   display: grid;
   grid-template-columns: 1fr 1fr;
+  grid-template-rows: repeat(3, minmax(0, 1fr));
   gap: 0.65rem;
   padding: 0.75rem 0.75rem 1rem;
 }
@@ -193,7 +256,9 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-height: 118px;
+  align-self: stretch;
+  min-height: 0;
+  height: 100%;
   padding: 0.75rem 0.4rem 0.65rem;
   border: 2px solid var(--gym-mustard);
   border-radius: 14px;
@@ -519,6 +584,43 @@ body {
   to {
     opacity: 1;
   }
+}
+
+/* —— Placeholder secciones —— */
+.coming-soon-page {
+  max-width: 24rem;
+  margin: 0 auto;
+  padding: 2rem 1.25rem;
+  text-align: center;
+}
+
+.coming-soon-page__title {
+  margin: 0 0 0.75rem;
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: #0f172a;
+}
+
+.coming-soon-page__text {
+  margin: 0 0 1.5rem;
+  color: #64748b;
+  font-size: 0.95rem;
+}
+
+.coming-soon-page__back {
+  font-weight: 600;
+  color: var(--gym-mustard-dark);
+  text-decoration: none;
+}
+
+.coming-soon-page__back:hover {
+  text-decoration: underline;
+}
+
+.coming-soon-page__back:focus-visible {
+  outline: 2px solid var(--gym-mustard);
+  outline-offset: 2px;
+  border-radius: 2px;
 }
 
 /* —— Login —— */
