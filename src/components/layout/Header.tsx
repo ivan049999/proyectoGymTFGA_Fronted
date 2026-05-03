@@ -1,8 +1,16 @@
 import { useState } from "react";
+import { useLocation } from "react-router-dom";
 import { SideNavDrawer } from "@/components/layout/SideNavDrawer";
 
 export function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const pathname = useLocation().pathname;
+  const title =
+    pathname === "/login"
+      ? "Iniciar sesión"
+      : pathname === "/registro"
+        ? "Registrarse"
+        : "Inicio";
 
   return (
     <>
@@ -23,7 +31,7 @@ export function Header() {
           />
         </svg>
       </button>
-      <h1 className="app-header__title">Inicio</h1>
+      <h1 className="app-header__title">{title}</h1>
       <button
         type="button"
         className="app-header__icon-btn"

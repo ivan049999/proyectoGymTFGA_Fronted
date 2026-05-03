@@ -29,7 +29,13 @@ export function Footer() {
           />
         </svg>
       </button>
-      <button type="button" className="app-bottom-nav__link" aria-label="Perfil">
+      <NavLink
+        to="/login"
+        className={({ isActive }) =>
+          `app-bottom-nav__link${isActive ? " app-bottom-nav__link--active" : ""}`
+        }
+        aria-label="Perfil"
+      >
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden>
           <path
             d="M12 12a4 4 0 100-8 4 4 0 000 8zM4 20a8 8 0 0116 0"
@@ -38,7 +44,7 @@ export function Footer() {
             strokeLinecap="round"
           />
         </svg>
-      </button>
+      </NavLink>
       <button type="button" className="app-bottom-nav__link" aria-label="Ayuda">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden>
           <circle cx="12" cy="12" r="9" stroke="currentColor" strokeWidth="2" />

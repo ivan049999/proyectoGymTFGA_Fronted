@@ -520,3 +520,118 @@ body {
     opacity: 1;
   }
 }
+
+/* —— Login —— */
+.login-page {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 22rem;
+  margin: 0 auto;
+  width: 100%;
+  min-height: 0;
+  padding: 1.5rem 1.25rem;
+  box-sizing: border-box;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.login-title {
+  margin: 0 0 0.25rem;
+  font-size: 1.35rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  color: #f8fafc;
+  text-align: center;
+}
+
+.login-register-row {
+  margin: -0.25rem 0 0;
+  text-align: right;
+}
+
+.login-register-link {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--gym-mustard);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.login-register-link:hover {
+  color: #e8c84a;
+}
+
+.login-register-link:focus-visible {
+  outline: 2px solid var(--gym-mustard);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+.login-form-error {
+  margin: 0;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #f87171;
+  text-align: center;
+}
+
+.login-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.login-label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #e2e8f0;
+}
+
+.login-input {
+  width: 100%;
+  padding: 0.75rem 0.9rem;
+  border: 1px solid #334155;
+  border-radius: 0.5rem;
+  background: #0f0f0f;
+  color: #f8fafc;
+  font: inherit;
+  font-size: 1rem;
+}
+
+.login-input::placeholder {
+  color: #64748b;
+}
+
+.login-input:focus {
+  outline: 2px solid var(--gym-mustard);
+  outline-offset: 1px;
+  border-color: var(--gym-mustard-dark);
+}
+
+.login-submit {
+  margin-top: 0.25rem;
+  padding: 0.85rem 1rem;
+  border: none;
+  border-radius: 0.5rem;
+  background: linear-gradient(180deg, var(--gym-mustard) 0%, var(--gym-mustard-dark) 100%);
+  color: #0a0a0a;
+  font: inherit;
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.login-submit:hover {
+  filter: brightness(1.05);
+}
+
+.login-submit:focus-visible {
+  outline: 2px solid var(--gym-mustard);
+  outline-offset: 2px;
+}
