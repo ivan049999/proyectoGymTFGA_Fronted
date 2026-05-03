@@ -17,6 +17,11 @@ function mapAuthError(err: AuthError): string {
   return err.message || "Error al registrar la cuenta.";
 }
 
+function isValidEmail(value: string): boolean {
+  const v = value.trim();
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
+}
+
 export function RegisterPage() {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
@@ -28,7 +33,14 @@ export function RegisterPage() {
   async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const trimmed = email.trim();
-    if (!trimmed || !password) return;
+    if (!trimmed || !password) {
+      setError("Completa el correo y la contraseña.");
+      return;
+    }
+    if (!isValidEmail(trimmed)) {
+      setError("Introduce un correo electrónico válido.");
+      return;
+    }
     if (password !== confirmPassword) {
       setError("Las contraseñas no coinciden.");
       return;
