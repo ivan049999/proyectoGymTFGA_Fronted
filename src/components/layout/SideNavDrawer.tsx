@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
+import { useAuth } from "@/contexts/auth-context";
 
 const DRAWER_HEADER_BG =
   "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1200&q=80";
@@ -132,6 +133,8 @@ function IconUserPlaceholder() {
 }
 
 export function SideNavDrawer({ open, onClose }: SideNavDrawerProps) {
+  const { user, isAuthenticated, logout } = useAuth();
+
   useEffect(() => {
     if (!open) return;
     const onKey = (e: KeyboardEvent) => {
@@ -166,12 +169,14 @@ export function SideNavDrawer({ open, onClose }: SideNavDrawerProps) {
           style={{ backgroundImage: `url(${DRAWER_HEADER_BG})` }}
         >
           <p className="side-nav__brand">KONG</p>
-          <div className="side-nav__profile">
-            <div className="side-nav__avatar" aria-hidden>
-              <IconUserPlaceholder />
+          {isAuthenticated && user && (
+            <div className="side-nav__profile">
+              <div className="side-nav__avatar" aria-hidden>
+                <IconUserPlaceholder />
+              </div>
+              <span className="side-nav__user-name">{user.name}</span>
             </div>
-            <span className="side-nav__user-name">David</span>
-          </div>
+          )}
         </div>
 
         <ul className="side-nav__list">
@@ -199,14 +204,16 @@ export function SideNavDrawer({ open, onClose }: SideNavDrawerProps) {
               Invita a tus amigos
             </button>
           </li>
-          <li>
-            <button type="button" className="side-nav__item" onClick={onClose}>
-              <span className="side-nav__item-icon">
-                <IconHeart />
-              </span>
-              Mi perfil
-            </button>
-          </li>
+          {isAuthenticated && (
+            <li>
+              <button type="button" className="side-nav__item" onClick={onClose}>
+                <span className="side-nav__item-icon">
+                  <IconHeart />
+                </span>
+                Mi perfil
+              </button>
+            </li>
+          )}
           <li>
             <button type="button" className="side-nav__item" onClick={onClose}>
               <span className="side-nav__item-icon">
@@ -231,14 +238,23 @@ export function SideNavDrawer({ open, onClose }: SideNavDrawerProps) {
               Soporte
             </button>
           </li>
-          <li>
-            <button type="button" className="side-nav__item side-nav__item--logout" onClick={onClose}>
-              <span className="side-nav__item-icon">
-                <IconLogout />
-              </span>
-              Cerrar sesión
-            </button>
-          </li>
+          {isAuthenticated && (
+            <li>
+              <button
+                type="button"
+                className="side-nav__item side-nav__item--logout"
+                onClick={() => {
+                  logout();
+                  onClose();
+                }}
+              >
+                <span className="side-nav__item-icon">
+                  <IconLogout />
+                </span>
+                Cerrar sesión
+              </button>
+            </li>
+          )}
         </ul>
 
         <p className="side-nav__version">Versión 2.0.9</p>
