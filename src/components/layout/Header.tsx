@@ -1,11 +1,19 @@
+import { useState } from "react";
+import { SideNavDrawer } from "@/components/layout/SideNavDrawer";
+
 export function Header() {
+  const [menuOpen, setMenuOpen] = useState(false);
+
   return (
-    <header className="app-header app-header--app">
-      <button
-        type="button"
-        className="app-header__icon-btn"
-        aria-label="Abrir menú"
-      >
+    <>
+      <header className="app-header app-header--app">
+        <button
+          type="button"
+          className="app-header__icon-btn"
+          aria-label={menuOpen ? "Cerrar menú" : "Abrir menú"}
+          aria-expanded={menuOpen}
+          onClick={() => setMenuOpen((v) => !v)}
+        >
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden>
           <path
             d="M4 7h16M4 12h16M4 17h16"
@@ -37,5 +45,7 @@ export function Header() {
         </svg>
       </button>
     </header>
+      <SideNavDrawer open={menuOpen} onClose={() => setMenuOpen(false)} />
+    </>
   );
 }
