@@ -1,5 +1,21 @@
 import { FormEvent, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import type { AuthError } from "@supabase/supabase-js";
+import { getSupabase } from "@/lib/supabaseClient";
+
+function mapAuthError(err: AuthError): string {
+  const msg = err.message.toLowerCase();
+  if (msg.includes("already registered") || msg.includes("user already")) {
+    return "Este correo ya está registrado.";
+  }
+  if (msg.includes("password")) {
+    return "La contraseña no cumple los requisitos de Supabase (longitud o complejidad).";
+  }
+  if (msg.includes("email")) {
+    return "Correo no válido o no permitido.";
+  }
+  return err.message || "Error al registrar la cuenta.";
+}
 
 export function RegisterPage() {
   const navigate = useNavigate();
@@ -7,8 +23,9 @@ export function RegisterPage() {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
 
-  function handleSubmit(e: FormEvent<HTMLFormElement>) {
+  async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const trimmed = email.trim();
     if (!trimmed || !password) return;
@@ -17,7 +34,26 @@ export function RegisterPage() {
       return;
     }
     setError("");
-    navigate("/login");
+    setLoading(true);
+    try {
+      const supabase = getSupabase();
+      const { error: authError } = await supabase.auth.signUp({
+        email: trimmed,
+        password,
+      });
+
+      if (authError) {
+        setError(mapAuthError(authError));
+        return;
+      }
+
+      navigate("/login");
+    } catch (err) {
+      const msg = err instanceof Error ? err.message : String(err);
+      setError(msg);
+    } finally {
+      setLoading(false);
+    }
   }
 
   return (
@@ -37,6 +73,7 @@ export function RegisterPage() {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
+            disabled={loading}
           />
         </div>
         <div className="login-field">
@@ -53,6 +90,7 @@ export function RegisterPage() {
             onChange={(e) => setPassword(e.target.value)}
             required
             minLength={6}
+            disabled={loading}
           />
         </div>
         <div className="login-field">
@@ -69,6 +107,7 @@ export function RegisterPage() {
             onChange={(e) => setConfirmPassword(e.target.value)}
             required
             minLength={6}
+            disabled={loading}
           />
         </div>
         <p className="login-register-row">
@@ -77,8 +116,8 @@ export function RegisterPage() {
           </Link>
         </p>
         {error ? <p className="login-form-error">{error}</p> : null}
-        <button type="submit" className="login-submit">
-          Crear cuenta
+        <button type="submit" className="login-submit" disabled={loading}>
+          {loading ? "Creando cuenta…" : "Crear cuenta"}
         </button>
       </form>
     </div>
