@@ -106,20 +106,6 @@ function IconLogout() {
   );
 }
 
-function IconUserPlaceholder() {
-  return (
-    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden>
-      <circle cx="12" cy="8" r="4" stroke="currentColor" strokeWidth="2" />
-      <path
-        d="M6 20a6 6 0 0112 0"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-      />
-    </svg>
-  );
-}
-
 export function SideNavDrawer({ open, onClose }: SideNavDrawerProps) {
   const { user, isAuthenticated, logout } = useAuth();
 
@@ -162,7 +148,13 @@ export function SideNavDrawer({ open, onClose }: SideNavDrawerProps) {
           {isAuthenticated && user && (
             <div className="side-nav__profile">
               <div className="side-nav__avatar" aria-hidden>
-                <IconUserPlaceholder />
+                <img
+                  src="/imagenes/iconos-paginaWeb/laurel.png"
+                  alt=""
+                  className="side-nav__avatar-img"
+                  width={48}
+                  height={48}
+                />
               </div>
               <span className="side-nav__user-name">{user.name}</span>
             </div>

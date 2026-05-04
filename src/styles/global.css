@@ -515,6 +515,15 @@ body {
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.92);
   color: #64748b;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.side-nav__avatar-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
 }
 
 .side-nav__user-name {
