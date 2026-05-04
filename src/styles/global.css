@@ -154,6 +154,102 @@ body {
   min-height: 0;
 }
 
+.app-main--entrenamientos {
+  padding: 0;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+}
+
+/* —— Entrenamientos —— */
+.entrenamientos-page {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  background: #fff;
+  padding: 1rem 0.5rem 1.5rem;
+  max-width: 100%;
+  width: 100%;
+}
+
+.entrenamientos-banners {
+  display: flex;
+  flex-direction: column;
+  gap: 1.15rem;
+  max-width: 100%;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.entrenamientos-banner {
+  position: relative;
+  border-radius: 14px;
+  overflow: hidden;
+  min-height: 0;
+  aspect-ratio: 16 / 9;
+  max-height: min(58vh, 32rem);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+}
+
+.entrenamientos-banner__bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+}
+
+.entrenamientos-banner__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(10, 10, 10, 0.25) 0%,
+    rgba(10, 10, 10, 0.72) 55%,
+    rgba(8, 8, 8, 0.88) 100%
+  );
+}
+
+.entrenamientos-banner__content {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-end;
+  box-sizing: border-box;
+  padding: 1.15rem 1.15rem 1.2rem;
+}
+
+.entrenamientos-banner__title {
+  margin: 0;
+  font-size: clamp(1rem, 2.8vw, 1.35rem);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: #fff;
+  line-height: 1.25;
+  max-width: 22rem;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.45);
+}
+
+.entrenamientos-banner__accent {
+  margin-top: 0.55rem;
+  width: 100%;
+  max-width: min(18rem, 85%);
+  height: 3px;
+  border-radius: 2px;
+  background: linear-gradient(
+    90deg,
+    var(--gym-mustard-dark),
+    var(--gym-mustard),
+    var(--gym-mustard-dark)
+  );
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.25);
+}
+
 /* —— Home —— */
 .home-page {
   display: flex;
@@ -268,6 +364,7 @@ body {
   text-align: center;
   color: #fff;
   font: inherit;
+  text-decoration: none;
 }
 
 .home-card__bg {

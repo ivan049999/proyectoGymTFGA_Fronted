@@ -11,7 +11,9 @@ export function Header() {
       ? "Iniciar sesión"
       : pathname === "/registro"
         ? "Registrarse"
-        : "Inicio";
+        : pathname === "/entrenamientos"
+          ? "Entrenamientos"
+          : "Inicio";
 
   const showHomeNav = pathname === "/" || pathname === "/valoranos";
 

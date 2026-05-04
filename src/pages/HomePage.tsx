@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import { Link } from "react-router-dom";
 
 const HERO_BG =
   "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1200&q=80";
@@ -161,15 +162,26 @@ const SOCIAL_LINKS: {
 
 const HOME_TILES: {
   label: string;
+  to: string;
   icon: ReactNode;
   bg: string;
 }[] = [
-  { label: "Reserva", icon: <IconCalendar />, bg: CARD_BACKGROUNDS[0] },
-  { label: "Experiencias", icon: <IconStar />, bg: CARD_BACKGROUNDS[1] },
-  { label: "Entrenamientos", icon: <IconPeople />, bg: CARD_BACKGROUNDS[2] },
-  { label: "Personal Trainer", icon: <IconTrainer />, bg: CARD_BACKGROUNDS[3] },
-  { label: "Home Fitness", icon: <IconHome />, bg: CARD_BACKGROUNDS[4] },
-  { label: "Nutrición", icon: <IconApple />, bg: CARD_BACKGROUNDS[5] },
+  { label: "Reserva", to: "/reserva", icon: <IconCalendar />, bg: CARD_BACKGROUNDS[0] },
+  { label: "Experiencias", to: "/experiencias", icon: <IconStar />, bg: CARD_BACKGROUNDS[1] },
+  {
+    label: "Entrenamientos",
+    to: "/entrenamientos",
+    icon: <IconPeople />,
+    bg: CARD_BACKGROUNDS[2],
+  },
+  {
+    label: "Personal Trainer",
+    to: "/personal-trainer",
+    icon: <IconTrainer />,
+    bg: CARD_BACKGROUNDS[3],
+  },
+  { label: "Home Fitness", to: "/home-fitness", icon: <IconHome />, bg: CARD_BACKGROUNDS[4] },
+  { label: "Nutrición", to: "/nutricion", icon: <IconApple />, bg: CARD_BACKGROUNDS[5] },
 ];
 
 export function HomePage() {
@@ -206,7 +218,7 @@ export function HomePage() {
 
       <div className="home-grid">
         {HOME_TILES.map((tile) => (
-          <button key={tile.label} type="button" className="home-card">
+          <Link key={tile.label} to={tile.to} className="home-card">
             <span
               className="home-card__bg"
               style={{ backgroundImage: `url(${tile.bg})` }}
@@ -214,7 +226,7 @@ export function HomePage() {
             <span className="home-card__overlay" aria-hidden />
             <span className="home-card__icon-ring">{tile.icon}</span>
             <span className="home-card__label">{tile.label}</span>
-          </button>
+          </Link>
         ))}
       </div>
 

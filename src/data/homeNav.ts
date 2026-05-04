@@ -8,7 +8,6 @@ export const HOME_TOP_NAV = [
 export const SECTION_PLACEHOLDER_ROUTES = [
   { to: "/reserva", label: "Reserva" },
   { to: "/experiencias", label: "Experiencias" },
-  { to: "/entrenamientos", label: "Entrenamientos" },
   { to: "/personal-trainer", label: "Personal Trainer" },
   { to: "/home-fitness", label: "Home Fitness" },
   { to: "/nutricion", label: "Nutrición" },
