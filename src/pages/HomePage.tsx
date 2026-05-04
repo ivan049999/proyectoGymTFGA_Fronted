@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 import { Link } from "react-router-dom";
+import { useAuth } from "@/contexts/auth-context";
 
 const HERO_BG =
   "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1200&q=80";
@@ -184,7 +185,47 @@ const HOME_TILES: {
   { label: "Nutrición", to: "/nutricion", icon: <IconApple />, bg: CARD_BACKGROUNDS[5] },
 ];
 
+function HomeTileLink({
+  tile,
+  disabled,
+}: {
+  tile: (typeof HOME_TILES)[number];
+  disabled: boolean;
+}) {
+  const content = (
+    <>
+      <span
+        className="home-card__bg"
+        style={{ backgroundImage: `url(${tile.bg})` }}
+      />
+      <span className="home-card__overlay" aria-hidden />
+      <span className="home-card__icon-ring">{tile.icon}</span>
+      <span className="home-card__label">{tile.label}</span>
+    </>
+  );
+
+  if (disabled) {
+    return (
+      <div
+        className="home-card home-card--disabled"
+        aria-disabled="true"
+        title="Inicia sesión para acceder"
+      >
+        {content}
+      </div>
+    );
+  }
+
+  return (
+    <Link to={tile.to} className="home-card">
+      {content}
+    </Link>
+  );
+}
+
 export function HomePage() {
+  const { isAuthenticated } = useAuth();
+
   return (
     <div className="home-page">
       <section className="home-hero" aria-label="Destacados">
@@ -218,15 +259,11 @@ export function HomePage() {
 
       <div className="home-grid">
         {HOME_TILES.map((tile) => (
-          <Link key={tile.label} to={tile.to} className="home-card">
-            <span
-              className="home-card__bg"
-              style={{ backgroundImage: `url(${tile.bg})` }}
-            />
-            <span className="home-card__overlay" aria-hidden />
-            <span className="home-card__icon-ring">{tile.icon}</span>
-            <span className="home-card__label">{tile.label}</span>
-          </Link>
+          <HomeTileLink
+            key={tile.label}
+            tile={tile}
+            disabled={!isAuthenticated}
+          />
         ))}
       </div>
 

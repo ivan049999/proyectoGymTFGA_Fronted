@@ -419,6 +419,17 @@ body {
   outline-offset: 2px;
 }
 
+.home-card--disabled {
+  cursor: not-allowed;
+  pointer-events: none;
+  opacity: 0.58;
+  border-color: rgba(213, 164, 25, 0.35);
+}
+
+.home-card--disabled:hover .home-card__bg {
+  transform: none;
+}
+
 .home-social-footer {
   margin-top: auto;
   padding: 1.25rem 1rem 1.5rem;
