@@ -73,17 +73,6 @@ function IconPin() {
   );
 }
 
-function IconSocial() {
-  return (
-    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden>
-      <circle cx="18" cy="6" r="3" stroke="currentColor" strokeWidth="2" />
-      <circle cx="6" cy="12" r="3" stroke="currentColor" strokeWidth="2" />
-      <circle cx="18" cy="18" r="3" stroke="currentColor" strokeWidth="2" />
-      <path d="M8.6 13.4l4.8 2.2M15.4 10.6l-4.8 2.2" stroke="currentColor" strokeWidth="2" />
-    </svg>
-  );
-}
-
 function IconHelp() {
   return (
     <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden>
@@ -221,14 +210,6 @@ export function SideNavDrawer({ open, onClose }: SideNavDrawerProps) {
                 <IconPin />
               </span>
               Localizador de clubs
-            </button>
-          </li>
-          <li>
-            <button type="button" className="side-nav__item" onClick={onClose}>
-              <span className="side-nav__item-icon">
-                <IconSocial />
-              </span>
-              Social
             </button>
           </li>
           <li>
