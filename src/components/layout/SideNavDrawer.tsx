@@ -163,64 +163,64 @@ export function SideNavDrawer({ open, onClose }: SideNavDrawerProps) {
               Inicio
             </Link>
           </li>
-          <li>
-            <button type="button" className="side-nav__item" onClick={onClose}>
-              <span className="side-nav__item-icon">
-                <IconQr />
-              </span>
-              Código QR
-            </button>
-          </li>
-          <li>
-            <button type="button" className="side-nav__item" onClick={onClose}>
-              <span className="side-nav__item-icon">
-                <IconInvite />
-              </span>
-              Invita a tus amigos
-            </button>
-          </li>
           {isAuthenticated && (
-            <li>
-              <button type="button" className="side-nav__item" onClick={onClose}>
-                <span className="side-nav__item-icon">
-                  <IconHeart />
-                </span>
-                Mi perfil
-              </button>
-            </li>
-          )}
-          <li>
-            <button type="button" className="side-nav__item" onClick={onClose}>
-              <span className="side-nav__item-icon">
-                <IconPin />
-              </span>
-              Localizador de clubs
-            </button>
-          </li>
-          <li>
-            <button type="button" className="side-nav__item" onClick={onClose}>
-              <span className="side-nav__item-icon">
-                <IconHelp />
-              </span>
-              Soporte
-            </button>
-          </li>
-          {isAuthenticated && (
-            <li>
-              <button
-                type="button"
-                className="side-nav__item side-nav__item--logout"
-                onClick={() => {
-                  logout();
-                  onClose();
-                }}
-              >
-                <span className="side-nav__item-icon">
-                  <IconLogout />
-                </span>
-                Cerrar sesión
-              </button>
-            </li>
+            <>
+              <li>
+                <button type="button" className="side-nav__item" onClick={onClose}>
+                  <span className="side-nav__item-icon">
+                    <IconQr />
+                  </span>
+                  Código QR
+                </button>
+              </li>
+              <li>
+                <button type="button" className="side-nav__item" onClick={onClose}>
+                  <span className="side-nav__item-icon">
+                    <IconInvite />
+                  </span>
+                  Invita a tus amigos
+                </button>
+              </li>
+              <li>
+                <button type="button" className="side-nav__item" onClick={onClose}>
+                  <span className="side-nav__item-icon">
+                    <IconHeart />
+                  </span>
+                  Mi perfil
+                </button>
+              </li>
+              <li>
+                <button type="button" className="side-nav__item" onClick={onClose}>
+                  <span className="side-nav__item-icon">
+                    <IconPin />
+                  </span>
+                  Localizador de clubs
+                </button>
+              </li>
+              <li>
+                <button type="button" className="side-nav__item" onClick={onClose}>
+                  <span className="side-nav__item-icon">
+                    <IconHelp />
+                  </span>
+                  Soporte
+                </button>
+              </li>
+              <li>
+                <button
+                  type="button"
+                  className="side-nav__item side-nav__item--logout"
+                  onClick={() => {
+                    logout();
+                    onClose();
+                  }}
+                >
+                  <span className="side-nav__item-icon">
+                    <IconLogout />
+                  </span>
+                  Cerrar sesión
+                </button>
+              </li>
+            </>
           )}
         </ul>
 
