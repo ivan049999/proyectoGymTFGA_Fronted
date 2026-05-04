@@ -458,8 +458,11 @@ body {
 .side-nav__hero {
   position: relative;
   padding: 1.35rem 1.25rem 1.15rem;
-  background-size: cover;
-  background-position: center;
+  min-height: 7.5rem;
+  background-color: #0f1419;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center top;
   flex-shrink: 0;
 }
 
@@ -467,18 +470,32 @@ body {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(0, 0, 0, 0.35) 0%, rgba(0, 0, 0, 0.55) 100%);
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.2) 0%,
+    rgba(0, 0, 0, 0.42) 100%
+  );
+  pointer-events: none;
 }
 
 .side-nav__brand {
   position: relative;
   z-index: 1;
   margin: 0 0 1rem;
-  font-size: 1.35rem;
-  font-weight: 800;
-  letter-spacing: 0.12em;
   text-align: center;
+}
+
+.side-nav__brand-text {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
   color: #fff;
+  line-height: 1.15;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.45);
 }
 
 .side-nav__profile {

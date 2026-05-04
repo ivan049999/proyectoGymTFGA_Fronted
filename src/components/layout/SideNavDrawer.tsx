@@ -2,8 +2,7 @@ import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useAuth } from "@/contexts/auth-context";
 
-const DRAWER_HEADER_BG =
-  "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1200&q=80";
+const DRAWER_HEADER_BG = "/imagenes/logo-paginaWeb/logoPaginaWeb.png";
 
 type SideNavDrawerProps = {
   open: boolean;
@@ -168,7 +167,9 @@ export function SideNavDrawer({ open, onClose }: SideNavDrawerProps) {
           className="side-nav__hero"
           style={{ backgroundImage: `url(${DRAWER_HEADER_BG})` }}
         >
-          <p className="side-nav__brand">KONG</p>
+          <div className="side-nav__brand">
+            <span className="side-nav__brand-text">GOD FIT</span>
+          </div>
           {isAuthenticated && user && (
             <div className="side-nav__profile">
               <div className="side-nav__avatar" aria-hidden>
