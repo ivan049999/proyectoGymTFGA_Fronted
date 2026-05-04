@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useAuth } from "@/contexts/auth-context";
 
-const DRAWER_HEADER_BG = "/imagenes/logo-paginaWeb/logoPaginaWeb.png";
+const DRAWER_HEADER_BG = "/imagenes/iconos-paginaWeb/laurel.png";
 
 type SideNavDrawerProps = {
   open: boolean;
@@ -142,23 +142,16 @@ export function SideNavDrawer({ open, onClose }: SideNavDrawerProps) {
           className="side-nav__hero"
           style={{ backgroundImage: `url(${DRAWER_HEADER_BG})` }}
         >
-          <div className="side-nav__brand">
-            <span className="side-nav__brand-text">GOD FIT</span>
-          </div>
-          {isAuthenticated && user && (
-            <div className="side-nav__profile">
-              <div className="side-nav__avatar" aria-hidden>
-                <img
-                  src="/imagenes/iconos-paginaWeb/laurel.png"
-                  alt=""
-                  className="side-nav__avatar-img"
-                  width={48}
-                  height={48}
-                />
-              </div>
-              <span className="side-nav__user-name">{user.name}</span>
+          <div className="side-nav__hero-content">
+            <div className="side-nav__brand">
+              <span className="side-nav__brand-text">GOD FIT</span>
             </div>
-          )}
+            {isAuthenticated && user && (
+              <div className="side-nav__profile">
+                <span className="side-nav__user-name">{user.name}</span>
+              </div>
+            )}
+          </div>
         </div>
 
         <ul className="side-nav__list">

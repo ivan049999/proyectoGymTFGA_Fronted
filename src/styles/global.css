@@ -554,12 +554,12 @@ body {
 
 .side-nav__hero {
   position: relative;
-  padding: 1.35rem 1.25rem 1.15rem;
-  min-height: 7.5rem;
+  padding: 0;
+  min-height: 11.5rem;
   background-color: #0f1419;
-  background-size: contain;
+  background-size: cover;
   background-repeat: no-repeat;
-  background-position: center top;
+  background-position: center;
   flex-shrink: 0;
 }
 
@@ -569,22 +569,32 @@ body {
   inset: 0;
   background: linear-gradient(
     180deg,
-    rgba(0, 0, 0, 0.2) 0%,
-    rgba(0, 0, 0, 0.42) 100%
+    rgba(0, 0, 0, 0.35) 0%,
+    rgba(0, 0, 0, 0.65) 55%,
+    rgba(0, 0, 0, 0.82) 100%
   );
   pointer-events: none;
 }
 
-.side-nav__brand {
+.side-nav__hero-content {
   position: relative;
   z-index: 1;
-  margin: 0 0 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  min-height: 11.5rem;
+  padding: 1rem 1rem 1.15rem;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.side-nav__brand {
+  margin: 0 0 0.5rem;
   text-align: center;
 }
 
 .side-nav__brand-text {
-  position: relative;
-  z-index: 1;
   margin: 0;
   font-size: 1.2rem;
   font-weight: 800;
@@ -596,37 +606,20 @@ body {
 }
 
 .side-nav__profile {
-  position: relative;
-  z-index: 1;
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-}
-
-.side-nav__avatar {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 3rem;
-  height: 3rem;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.92);
-  color: #64748b;
-  overflow: hidden;
-  flex-shrink: 0;
-}
-
-.side-nav__avatar-img {
   width: 100%;
-  height: 100%;
-  object-fit: contain;
-  display: block;
 }
 
 .side-nav__user-name {
-  font-size: 1rem;
+  font-size: 0.82rem;
   font-weight: 600;
   color: #fff;
+  line-height: 1.25;
+  word-break: break-word;
+  max-width: 100%;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.65);
 }
 
 .side-nav__list {
