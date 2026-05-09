@@ -6,6 +6,7 @@ import {
   useState,
   type ReactNode,
 } from "react";
+import { getSupabase } from "@/lib/supabaseClient";
 
 const STORAGE_KEY = "gym-kong-auth-user";
 
@@ -56,6 +57,11 @@ export function AuthProvider({ children }: AuthProviderProps) {
   const logout = useCallback(() => {
     setUser(null);
     localStorage.removeItem(STORAGE_KEY);
+    try {
+      void getSupabase().auth.signOut();
+    } catch {
+      // noop: puede fallar si faltan variables de entorno en desarrollo
+    }
   }, []);
 
   const value = useMemo<AuthContextValue>(

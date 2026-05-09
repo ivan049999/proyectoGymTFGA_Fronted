@@ -5,6 +5,7 @@ import { Footer } from "@/components/layout/Footer";
 export function AppLayout() {
   const pathname = useLocation().pathname;
   const isDarkMain = pathname === "/" || pathname === "/login" || pathname === "/registro";
+  const isValoranos = pathname === "/valoranos";
   const isEntrenamientos = pathname === "/entrenamientos";
 
   return (
@@ -14,6 +15,8 @@ export function AppLayout() {
         className={
           isDarkMain
             ? "app-main app-main--home"
+            : isValoranos
+              ? "app-main app-main--valoranos"
             : isEntrenamientos
               ? "app-main app-main--entrenamientos"
               : "app-main"

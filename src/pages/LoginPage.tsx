@@ -66,8 +66,10 @@ export function LoginPage() {
       const sessionUser = data.user;
       const nameFromMeta =
         sessionUser?.user_metadata &&
-        typeof sessionUser.user_metadata["name"] === "string"
-          ? (sessionUser.user_metadata["name"] as string)
+        (typeof sessionUser.user_metadata["full_name"] === "string" ||
+          typeof sessionUser.user_metadata["name"] === "string")
+          ? ((sessionUser.user_metadata["full_name"] ??
+              sessionUser.user_metadata["name"]) as string)
           : null;
       const displayName =
         nameFromMeta?.trim() ||

@@ -24,6 +24,7 @@ function isValidEmail(value: string): boolean {
 
 export function RegisterPage() {
   const navigate = useNavigate();
+  const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -32,9 +33,10 @@ export function RegisterPage() {
 
   async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    const nameTrimmed = fullName.trim();
     const trimmed = email.trim();
-    if (!trimmed || !password) {
-      setError("Completa el correo y la contraseña.");
+    if (!nameTrimmed || !trimmed || !password) {
+      setError("Completa el nombre, el correo y la contraseña.");
       return;
     }
     if (!isValidEmail(trimmed)) {
@@ -52,6 +54,11 @@ export function RegisterPage() {
       const { error: authError } = await supabase.auth.signUp({
         email: trimmed,
         password,
+        options: {
+          data: {
+            full_name: nameTrimmed,
+          },
+        },
       });
 
       if (authError) {
@@ -72,6 +79,22 @@ export function RegisterPage() {
     <div className="login-page">
       <form className="login-form" onSubmit={handleSubmit} noValidate>
         <h2 className="login-title">Registrarse</h2>
+        <div className="login-field">
+          <label className="login-label" htmlFor="register-fullname">
+            Nombre y apellidos
+          </label>
+          <input
+            id="register-fullname"
+            className="login-input"
+            type="text"
+            name="fullName"
+            autoComplete="name"
+            value={fullName}
+            onChange={(e) => setFullName(e.target.value)}
+            required
+            disabled={loading}
+          />
+        </div>
         <div className="login-field">
           <label className="login-label" htmlFor="register-email">
             Correo electrónico

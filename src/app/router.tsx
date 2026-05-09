@@ -7,6 +7,7 @@ import { RegisterPage } from "@/pages/RegisterPage";
 import { ComingSoonPage } from "@/pages/ComingSoonPage";
 import { EntrenamientosPage } from "@/pages/EntrenamientosPage";
 import { NotFoundPage } from "@/pages/NotFoundPage";
+import { ValoranosPage } from "@/pages/ValoranosPage";
 
 export function AppRouter() {
   return (
@@ -15,7 +16,7 @@ export function AppRouter() {
         <Route index element={<HomePage />} />
         <Route path="login" element={<LoginPage />} />
         <Route path="registro" element={<RegisterPage />} />
-        <Route path="valoranos" element={<ComingSoonPage title="Valóranos" />} />
+        <Route path="valoranos" element={<ValoranosPage />} />
         <Route path="entrenamientos" element={<EntrenamientosPage />} />
         {SECTION_PLACEHOLDER_ROUTES.map(({ to, label }) => {
           const path = to.replace(/^\//, "");
