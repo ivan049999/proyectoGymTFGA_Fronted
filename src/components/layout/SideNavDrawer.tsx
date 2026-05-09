@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { useAuth } from "@/contexts/auth-context";
 
@@ -108,6 +108,8 @@ function IconLogout() {
 
 export function SideNavDrawer({ open, onClose }: SideNavDrawerProps) {
   const { user, isAuthenticated, logout } = useAuth();
+  const [isLoggingOut, setIsLoggingOut] = useState(false);
+  const logoutTimersRef = useRef<number[]>([]);
 
   useEffect(() => {
     if (!open) return;
@@ -127,6 +129,20 @@ export function SideNavDrawer({ open, onClose }: SideNavDrawerProps) {
     };
   }, [open]);
 
+  useEffect(() => {
+    if (open) return;
+    logoutTimersRef.current.forEach((t) => window.clearTimeout(t));
+    logoutTimersRef.current = [];
+    setIsLoggingOut(false);
+  }, [open]);
+
+  useEffect(() => {
+    return () => {
+      logoutTimersRef.current.forEach((t) => window.clearTimeout(t));
+      logoutTimersRef.current = [];
+    };
+  }, []);
+
   if (!open) return null;
 
   return (
@@ -135,9 +151,17 @@ export function SideNavDrawer({ open, onClose }: SideNavDrawerProps) {
         type="button"
         className="side-nav__backdrop"
         aria-label="Cerrar menú"
-        onClick={onClose}
+        onClick={isLoggingOut ? undefined : onClose}
       />
       <nav id="side-navigation" className="side-nav__panel" aria-label="Menú principal">
+        {isLoggingOut ? (
+          <div className="logout-overlay" role="status" aria-live="polite" aria-label="Cerrando sesión">
+            <div className="logout-overlay__card">
+              <span className="logout-overlay__spinner" aria-hidden />
+              <p className="logout-overlay__text">Cerrando sesión…</p>
+            </div>
+          </div>
+        ) : null}
         <div
           className="side-nav__hero"
           style={{ backgroundImage: `url(${DRAWER_HEADER_BG})` }}
@@ -210,9 +234,19 @@ export function SideNavDrawer({ open, onClose }: SideNavDrawerProps) {
                   type="button"
                   className="side-nav__item side-nav__item--logout"
                   onClick={() => {
-                    logout();
-                    onClose();
+                    if (isLoggingOut) return;
+                    setIsLoggingOut(true);
+
+                    const t1 = window.setTimeout(() => {
+                      logout();
+                    }, 650);
+                    const t2 = window.setTimeout(() => {
+                      onClose();
+                      setIsLoggingOut(false);
+                    }, 900);
+                    logoutTimersRef.current.push(t1, t2);
                   }}
+                  disabled={isLoggingOut}
                 >
                   <span className="side-nav__item-icon">
                     <IconLogout />
