@@ -6,7 +6,8 @@ export function AppLayout() {
   const pathname = useLocation().pathname;
   const isDarkMain = pathname === "/" || pathname === "/login" || pathname === "/registro";
   const isValoranos = pathname === "/valoranos";
-  const isEntrenamientos = pathname === "/entrenamientos";
+  const isEntrenamientos =
+    pathname === "/entrenamientos" || pathname.startsWith("/entrenamientos/");
 
   return (
     <div className="app-shell">
