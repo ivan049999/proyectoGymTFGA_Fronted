@@ -7,6 +7,7 @@ import { RegisterPage } from "@/pages/RegisterPage";
 import { ComingSoonPage } from "@/pages/ComingSoonPage";
 import { EntrenamientosPage } from "@/pages/EntrenamientosPage";
 import { PlanesEntrenamientoPage } from "@/pages/PlanesEntrenamientoPage";
+import { PlanDetallePage } from "@/pages/PlanDetallePage";
 import { NotFoundPage } from "@/pages/NotFoundPage";
 import { ValoranosPage } from "@/pages/ValoranosPage";
 
@@ -20,6 +21,7 @@ export function AppRouter() {
         <Route path="valoranos" element={<ValoranosPage />} />
         <Route path="entrenamientos" element={<EntrenamientosPage />} />
         <Route path="entrenamientos/planes" element={<PlanesEntrenamientoPage />} />
+        <Route path="entrenamientos/planes/:slug" element={<PlanDetallePage />} />
         {SECTION_PLACEHOLDER_ROUTES.map(({ to, label }) => {
           const path = to.replace(/^\//, "");
           return (

@@ -286,6 +286,169 @@ body {
   color: #5c5c5c;
 }
 
+.planes-list__item--link {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* —— Detalle de plan —— */
+.plan-detalle-page {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  background: #fff;
+  padding: 0 0 1rem;
+  max-width: 100%;
+  width: 100%;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+.plan-detalle-hero {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  max-height: min(42vh, 16rem);
+  overflow: hidden;
+  flex-shrink: 0;
+  background: #1a1208;
+}
+
+.plan-detalle-hero__img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center right;
+}
+
+.plan-detalle-hero__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(8, 8, 8, 0.05) 0%,
+    rgba(8, 8, 8, 0.2) 55%,
+    rgba(8, 8, 8, 0.45) 100%
+  );
+  pointer-events: none;
+}
+
+.plan-detalle-hero__content {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: center;
+  padding: 0.75rem 1.25rem 0.75rem 1rem;
+  box-sizing: border-box;
+  text-align: right;
+}
+
+.plan-detalle-hero__title {
+  margin: 0 0 0.5rem;
+  font-size: clamp(0.95rem, 2.8vw, 1.1rem);
+  font-weight: 600;
+  color: #fff;
+  line-height: 1.25;
+  letter-spacing: 0.01em;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+.plan-detalle-hero__stats {
+  display: flex;
+  align-items: flex-end;
+  gap: 1.75rem;
+}
+
+.plan-detalle-hero__stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 3.25rem;
+}
+
+.plan-detalle-hero__nike {
+  width: 2rem;
+  height: auto;
+  color: #fff;
+  margin-bottom: 0.15rem;
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.35));
+}
+
+.plan-detalle-hero__stat-value {
+  font-size: clamp(1.75rem, 5vw, 2.25rem);
+  font-weight: 700;
+  color: #fff;
+  line-height: 1;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.45);
+}
+
+.plan-detalle-hero__stat-label {
+  font-size: 0.65rem;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.95);
+  margin-top: 0.2rem;
+  line-height: 1.2;
+}
+
+.plan-detalle-hero__stat--minutos {
+  padding-top: calc(2rem + 0.15rem);
+}
+
+.plan-detalle-ejercicios {
+  list-style: none;
+  margin: 0;
+  padding: 0 0.75rem;
+  flex: 1;
+}
+
+.plan-detalle-ejercicio {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.85rem;
+  padding: 0.95rem 0;
+  border-bottom: 1px solid #eee;
+}
+
+.plan-detalle-ejercicio:last-child {
+  border-bottom: none;
+}
+
+.plan-detalle-ejercicio__info {
+  flex: 1;
+  min-width: 0;
+}
+
+.plan-detalle-ejercicio__nombre {
+  margin: 0 0 0.35rem;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  line-height: 1.25;
+}
+
+.plan-detalle-ejercicio__meta {
+  margin: 0;
+  font-size: 0.78rem;
+  font-weight: 400;
+  color: #666;
+  line-height: 1.45;
+}
+
+.plan-detalle-ejercicio__thumb {
+  flex-shrink: 0;
+  width: 4.5rem;
+  height: 4.5rem;
+  border-radius: 8px;
+  object-fit: cover;
+  background: #e8e8e8;
+}
+
 .entrenamientos-banner__bg {
   position: absolute;
   inset: 0;

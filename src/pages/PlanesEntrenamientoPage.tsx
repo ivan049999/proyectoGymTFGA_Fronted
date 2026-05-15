@@ -1,4 +1,6 @@
+import { Link } from "react-router-dom";
 import { PLANES_ENTRENAMIENTO } from "@/data/planesEntrenamiento";
+import { getPlanDetalle, labelToSlug } from "@/data/planesDetalle";
 
 function ChevronIcon() {
   return (
@@ -25,14 +27,33 @@ export function PlanesEntrenamientoPage() {
   return (
     <div className="planes-page">
       <ul className="planes-list">
-        {PLANES_ENTRENAMIENTO.map((label) => (
-          <li key={label}>
-            <button type="button" className="planes-list__item">
-              <span className="planes-list__label">{label}</span>
-              <ChevronIcon />
-            </button>
-          </li>
-        ))}
+        {PLANES_ENTRENAMIENTO.map((label) => {
+          const slug = labelToSlug(label);
+          const hasDetalle = Boolean(getPlanDetalle(slug));
+
+          if (hasDetalle) {
+            return (
+              <li key={label}>
+                <Link
+                  to={`/entrenamientos/planes/${slug}`}
+                  className="planes-list__item planes-list__item--link"
+                >
+                  <span className="planes-list__label">{label}</span>
+                  <ChevronIcon />
+                </Link>
+              </li>
+            );
+          }
+
+          return (
+            <li key={label}>
+              <button type="button" className="planes-list__item">
+                <span className="planes-list__label">{label}</span>
+                <ChevronIcon />
+              </button>
+            </li>
+          );
+        })}
       </ul>
     </div>
   );

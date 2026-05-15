@@ -11,7 +11,7 @@ export function Header() {
       ? "Iniciar sesión"
       : pathname === "/registro"
         ? "Registrarse"
-        : pathname === "/entrenamientos/planes"
+        : pathname.startsWith("/entrenamientos/planes")
           ? "Planes de entrenamiento"
           : pathname === "/entrenamientos"
             ? "Entrenamientos"
