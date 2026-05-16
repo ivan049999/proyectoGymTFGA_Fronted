@@ -6,8 +6,8 @@ function ChevronIcon() {
   return (
     <svg
       className="planes-list__chevron"
-      width="20"
-      height="20"
+      width="24"
+      height="24"
       viewBox="0 0 24 24"
       fill="none"
       aria-hidden
