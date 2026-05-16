@@ -269,6 +269,110 @@ export const PLANES_DETALLE: Record<string, PlanDetalle> = {
       },
     ],
   },
+  "define-tu-zona-inferior": {
+    slug: "define-tu-zona-inferior",
+    titulo: "Define tu zona inferior",
+    banner: BANNER_PRIMEROS_PASOS,
+    ejerciciosCount: 6,
+    minutos: 60,
+    ejercicios: [
+      {
+        nombre: "Bike",
+        duracion: "5'",
+        recuperacion: "< 140 ppm",
+        imagen: "/imagenes/planes/empieza-con-confianza/Bike-Gym.webp",
+      },
+      {
+        nombre: "Leg Press",
+        series: 3,
+        repeticiones: 12,
+        recuperacion: "90 Seg",
+        imagen: "/imagenes/planes/primeros-pasos/Leg-Press-Gym.jpg",
+      },
+      {
+        nombre: "Smith Machine Squat",
+        series: 3,
+        repeticiones: 10,
+        recuperacion: "90 Seg",
+        imagen: "/imagenes/planes/full-body/Smith-Machine-Squat-Gym.jpg",
+      },
+      {
+        nombre: "Knee Extension",
+        series: 3,
+        repeticiones: 12,
+        recuperacion: "60 Seg",
+        imagen: "/imagenes/planes/full-body/Knee-Extension-Gym.webp",
+      },
+      {
+        nombre: "Leg Press (énfasis glúteo)",
+        series: 3,
+        repeticiones: 10,
+        recuperacion: "90 Seg",
+        imagen: "/imagenes/planes/primeros-pasos/Leg-Press-Gym.jpg",
+      },
+      {
+        nombre: "Knee Extension (serie final)",
+        series: 2,
+        repeticiones: 15,
+        recuperacion: "45 Seg",
+        imagen:
+          "/imagenes/planes/define-zona-inferior/Knee-Extension-Gym.webp",
+      },
+    ],
+  },
+  gluteos: {
+    slug: "gluteos",
+    titulo: "Glúteos",
+    banner: BANNER_PRIMEROS_PASOS,
+    ejerciciosCount: 6,
+    minutos: 60,
+    ejercicios: [
+      {
+        nombre: "Bike",
+        duracion: "5'",
+        recuperacion: "< 140 ppm",
+        imagen: "/imagenes/planes/empieza-con-confianza/Bike-Gym.webp",
+      },
+      {
+        nombre: "Leg Press (pies altos y anchos)",
+        series: 4,
+        repeticiones: 12,
+        recuperacion: "90 Seg",
+        imagen: "/imagenes/planes/primeros-pasos/Leg-Press-Gym.jpg",
+      },
+      {
+        nombre: "Smith Machine Sumo Squat",
+        series: 3,
+        repeticiones: 10,
+        recuperacion: "90 Seg",
+        imagen:
+          "/imagenes/planes/gluteos/Smith-Machine-Sumo-Squat-Gym.jpg",
+      },
+      {
+        nombre: "Leg Press (a una pierna)",
+        series: 3,
+        repeticiones: 12,
+        recuperacion: "60 Seg",
+        imagen:
+          "/imagenes/planes/gluteos/Leg-Press-A-Una-Pierna-Gym.jpg",
+      },
+      {
+        nombre: "Smith Machine Reverse Lunge",
+        series: 3,
+        repeticiones: 10,
+        recuperacion: "60 Seg",
+        imagen:
+          "/imagenes/planes/gluteos/Smith-Machine-Reverse-Lunge-Gym.jpg",
+      },
+      {
+        nombre: "Elliptic",
+        duracion: "5'",
+        recuperacion: "< 120 ppm",
+        imagen:
+          "/imagenes/planes/primeros-pasos/Elíptica946iExperiencie-.webp",
+      },
+    ],
+  },
 };
 
 export function labelToSlug(label: string): string {
