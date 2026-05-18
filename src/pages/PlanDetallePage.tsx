@@ -24,6 +24,9 @@ function EjercicioDetalles({ ejercicio }: { ejercicio: EjercicioPlan }) {
   if (ejercicio.series != null) {
     lineas.push(`Series: ${ejercicio.series}`);
   }
+  if (ejercicio.distancia) {
+    lineas.push(`Distancia: ${ejercicio.distancia}`);
+  }
   if (ejercicio.repeticiones != null) {
     lineas.push(`Repeticiones: ${ejercicio.repeticiones}`);
   }
@@ -59,6 +62,9 @@ export function PlanDetallePage() {
         <div className="plan-detalle-hero__overlay" aria-hidden />
         <div className="plan-detalle-hero__content">
           <h2 className="plan-detalle-hero__title">{plan.titulo}</h2>
+          {plan.categoria ? (
+            <p className="plan-detalle-hero__categoria">{plan.categoria}</p>
+          ) : null}
           <div className="plan-detalle-hero__stats">
             <div className="plan-detalle-hero__stat">
               <NikeSwooshIcon />

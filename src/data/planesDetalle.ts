@@ -2,6 +2,7 @@ export type EjercicioPlan = {
   nombre: string;
   imagen: string;
   duracion?: string;
+  distancia?: string;
   series?: number;
   repeticiones?: number;
   recuperacion: string;
@@ -10,6 +11,7 @@ export type EjercicioPlan = {
 export type PlanDetalle = {
   slug: string;
   titulo: string;
+  categoria?: string;
   banner: string;
   ejerciciosCount: number;
   minutos: number;
@@ -370,6 +372,63 @@ export const PLANES_DETALLE: Record<string, PlanDetalle> = {
         recuperacion: "< 120 ppm",
         imagen:
           "/imagenes/planes/primeros-pasos/Elíptica946iExperiencie-.webp",
+      },
+    ],
+  },
+  "puesta-a-punto": {
+    slug: "puesta-a-punto",
+    titulo: "Puesta a punto",
+    categoria: "RUNNING",
+    banner: BANNER_PRIMEROS_PASOS,
+    ejerciciosCount: 7,
+    minutos: 60,
+    ejercicios: [
+      {
+        nombre: "Caminata activa",
+        duracion: "5'",
+        recuperacion: "—",
+        imagen: "/imagenes/planes/puesta-a-punto/caminata-activa.jpeg",
+      },
+      {
+        nombre: "Trote suave",
+        duracion: "15'",
+        recuperacion: "< 140 ppm",
+        imagen: "/imagenes/planes/puesta-a-punto/trote-suave.webp",
+      },
+      {
+        nombre: "Aceleraciones",
+        series: 6,
+        distancia: "100 m",
+        recuperacion: "90 Seg",
+        imagen: "/imagenes/planes/puesta-a-punto/aceleraciones.jpeg",
+      },
+      {
+        nombre: "Rodaje continuo",
+        duracion: "20'",
+        recuperacion: "Zona 2",
+        imagen:
+          "https://images.unsplash.com/photo-1552674605-db6ffd4facb5?auto=format&fit=crop&w=200&q=80",
+      },
+      {
+        nombre: "Talones al glúteo",
+        series: 3,
+        distancia: "30 m",
+        recuperacion: "45 Seg",
+        imagen: "/imagenes/planes/puesta-a-punto/tacones-al-gluteo.jpg",
+      },
+      {
+        nombre: "Rodillas altas",
+        series: 3,
+        distancia: "30 m",
+        recuperacion: "45 Seg",
+        imagen: "/imagenes/planes/puesta-a-punto/rodillas-altas.webp",
+      },
+      {
+        nombre: "Enfriamiento y estiramientos",
+        duracion: "10'",
+        recuperacion: "—",
+        imagen:
+          "https://images.unsplash.com/photo-1544367567-0f2fcb009e9b?auto=format&fit=crop&w=200&q=80",
       },
     ],
   },

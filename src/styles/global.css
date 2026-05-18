@@ -363,13 +363,23 @@ body {
 }
 
 .plan-detalle-hero__title {
-  margin: 0 0 0.5rem;
+  margin: 0 0 0.25rem;
   font-size: clamp(0.95rem, 2.8vw, 1.1rem);
   font-weight: 600;
   color: #fff;
   line-height: 1.25;
   letter-spacing: 0.01em;
   text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+.plan-detalle-hero__categoria {
+  margin: 0 0 0.5rem;
+  font-size: clamp(1.35rem, 4.5vw, 1.75rem);
+  font-weight: 800;
+  color: #e8a317;
+  line-height: 1.1;
+  letter-spacing: 0.04em;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
 }
 
 .plan-detalle-hero__stats {
